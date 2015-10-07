@@ -1,7 +1,14 @@
 group 'nalapa'
-version '0.1'
+version '1.0'
 
 apply plugin: 'java'
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: "file:///home/ananta/maven-repository/")
+    }
+}
 
 sourceCompatibility = 1.5
 
