@@ -22,10 +22,10 @@ public class Tokenizer {
             for (int i = 0; i < result.length; i++) {
                 String word = result[i];
                 String[] res = {word};
-                int len = word.length() - 1;
-                String lastChar = ""+word.charAt(len);
-                if (Tokenizer.isContainingPunctuation(lastChar) && len!=0)
-                    res = new String[]{word.substring(0,len), lastChar};
+                int lastCharIdx = word.length() - 1;
+                String lastChar = ""+word.charAt(lastCharIdx);
+                if (Tokenizer.isContainingPunctuation(lastChar) && lastCharIdx!=0)
+                    res = new String[]{word.substring(0,lastCharIdx), lastChar};
                 container[i] = res;
             }
             ArrayList<String> stringArray = new ArrayList<String>();
@@ -69,6 +69,7 @@ public class Tokenizer {
     }
 
     public static String[] tokenize (String text) {
+        text = (text.length()==0) ? " " : text;
         String[] result = text.split(" ");
         result = Tokenizer.splitPunctuationRight(result);
         result = Tokenizer.splitPunctuationLeft(result);

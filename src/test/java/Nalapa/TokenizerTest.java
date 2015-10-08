@@ -31,12 +31,18 @@ public class TokenizerTest {
     public void tokenize() {
         String[] sentences = {
             "Hello world, my name is Alice...",
-            "Monday, (1/11). I have 1.000 rupiah."
+            "Monday, (1/11). I have 1.000 rupiah.",
+            "\"Hahaha\"",
+            " ",
+            ""
         };
 
         String[][] tokenss = {
-                {"Hello", "world", ",", "my", "name", "is", "Alice", ".", ".", "."},
-                {"Monday", ",", "(", "1/11", ")", ".", "I", "have", "1.000", "rupiah", "."}
+            {"Hello", "world", ",", "my", "name", "is", "Alice", ".", ".", "."},
+            {"Monday", ",", "(", "1/11", ")", ".", "I", "have", "1.000", "rupiah", "."},
+            {"\"", "Hahaha", "\""},
+            {},
+            {}
         };
 
         for (int i = 0; i < sentences.length; i++) {
