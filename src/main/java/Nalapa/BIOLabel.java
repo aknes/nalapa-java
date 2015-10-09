@@ -5,7 +5,7 @@ package Nalapa;
  */
 
 import org.json.*;
-import java.util.Iterator;
+import org.json.JSONException;
 import org.apache.commons.lang3.ArrayUtils;
 
 public class BIOLabel {
@@ -27,11 +27,16 @@ public class BIOLabel {
         for (int i = 0; i < data_labels.length; i++)
             data_labels[i] = new String[]{};
 
-        JSONObject labels = input.getJSONObject("labels");
-        Iterator keys = labels.keys();
-        while(keys.hasNext()) {
-            String key = keys.next() + "";
-            JSONArray labelWords = labels.getJSONArray(key);
+        JSONArray labels = new JSONArray(new String[]{});
+        try {
+            labels = input.getJSONArray("labels");
+        } catch (JSONException e) {}
+
+        for (int idx = 0; idx<labels.length(); idx++) {
+            
+            String key = ((JSONObject) labels.get(idx)).getString("label");
+            JSONArray labelWords = ((JSONObject) labels.get(idx)).getJSONArray("words");
+            
             for (int i = 0; i < labelWords.length(); i++) {
                 String labelWord = labelWords.getString(i);
                 String[] labelTokens = Tokenizer.tokenize(labelWord);
