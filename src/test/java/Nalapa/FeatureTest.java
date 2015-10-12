@@ -15,12 +15,6 @@ public class FeatureTest {
     private Feature feature;
 
     @Test
-    public void isNumber() {
-        assertEquals(true, Feature.isNumber("abc123"));
-        assertEquals(false, Feature.isNumber("abc"));
-        assertEquals(true, Feature.isNumber("abc1"));
-    }
-    @Test
     public void isBeginCapital() {
         assertEquals(true, Feature.isBeginCapital("Abc"));
         assertEquals(true, Feature.isBeginCapital("ABc"));
