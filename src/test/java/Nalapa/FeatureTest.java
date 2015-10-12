@@ -19,6 +19,28 @@ public class FeatureTest {
         assertEquals(true, Feature.isBeginCapital("Abc"));
         assertEquals(true, Feature.isBeginCapital("ABc"));
         assertEquals(false, Feature.isBeginCapital("aBC"));
+        assertEquals(false, Feature.isBeginCapital(""));
+    }
+    @Test
+    public void isContainNotAlphanumeric() {
+        assertEquals(false, Feature.isContainNotAlphanumeric("abc"));
+        assertEquals(true, Feature.isContainNotAlphanumeric("@bc"));
+        assertEquals(false, Feature.isContainNotAlphanumeric("abc1"));
+        assertEquals(false, Feature.isContainNotAlphanumeric(""));
+    }
+    @Test
+    public void isAllCapital(){
+        assertEquals(true, Feature.isAllCapital("ABCD"));
+        assertEquals(false, Feature.isAllCapital("Abcd"));
+        assertEquals(false, Feature.isAllCapital("AbcD"));
+        assertEquals(false, Feature.isAllCapital(""));
+    }
+    @Test
+    public void isAllPunctuation(){
+        assertEquals(true, Feature.isAllPunctuation("abcd;"));
+        assertEquals(true, Feature.isAllPunctuation(";"));
+        assertEquals(false, Feature.isAllPunctuation("abcd"));
+        assertEquals(false, Feature.isAllPunctuation(""));
     }
     @Test
     public void isEquals() {
