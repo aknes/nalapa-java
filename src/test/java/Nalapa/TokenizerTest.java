@@ -52,4 +52,19 @@ public class TokenizerTest {
         }
     }
 
+    @Test
+    public void splitSentence() {
+        String text =
+                "Hello world, my name is Alice! I live in Bandung. Jakarta kebanjiran - tugas kuliah sulit? Baiklah.";
+        String[] text2 = text.split("(?<=[-.!?])\\s*");
+        String[] sentence = {"Hello world, my name is Alice", "I live in Bandung",
+                "Jakarta kebanjiran", "tugas kuliah sulit", "Baiklah"};
+
+        String[] t = tokenizer.splitSentence(text);
+        for (int i = 0; i < sentence.length; i++) {
+            assertEquals(t.length, text2.length);
+            assertEquals(true, t[i].equals(text2[i]));
+        }
+    }
+
 }

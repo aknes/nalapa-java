@@ -75,4 +75,10 @@ public class Tokenizer {
         result = Tokenizer.splitPunctuationLeft(result);
         return result;
     }
+
+    public static String[] splitSentence(String text){
+        text = (text.length()==0) ? " " : text;
+        String[] word = text.split("(?<=[-.!?])\\s*");
+        return word;
+    }
 }
